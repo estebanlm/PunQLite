@@ -296,11 +296,9 @@ PqDatabaseBrowser >> openDatabase: filename [
 { #category : #'private - actions' }
 PqDatabaseBrowser >> openFile [
     | filename |
-    filename := UITheme builder 
-                            fileOpen: 'Choose a .db file' 
-                            extensions: #('db').
+    filename := UITheme builder chooseExistingFileReference: 'Choose a .db file' extensions: #('db')path: '.'.
     filename isNil ifTrue:[ ^self ].
-    self openDatabase: filename name
+    self openDatabase: filename fullName
 ]
 
 { #category : #'private - actions' }
